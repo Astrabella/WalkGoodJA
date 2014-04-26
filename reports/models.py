@@ -29,26 +29,3 @@ class Response(models.Model):
     def get_details(self):
         return self.details
 
-
-
-
-#class (models.Model):
-#    connection = models.CharField(max_length=50)
-#    current_state = models.IntegerField(default=0)
-#    date_created = models.DateTimeField(auto_now_add=True)
-#
-#    def get_connection(self):
-#        return self.connection
-#
-#    def get_date(self):
-#        return self.date_created
-#
-#    def get_state(self):
-#        return self.current_state
-#
-#    def set_state(self, new_state):
-#        self.current_state = new_state
-#
-#    def __unicode__(self):
-#        return self.connection
-#
