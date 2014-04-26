@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Report(models.Model):
-    identity = models.charField(max_length=25)
+    identity = models.CharField(max_length=25)
     state = models.IntegerField(default=0) # current question ID
     date_created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
@@ -13,8 +13,14 @@ class Report(models.Model):
     def set_identity(self, identity):
         self.identity = identity
 
+    def get_state(self):
+        return self.state
+
+    def set_state(self, state):
+        self.state = state        
+
     def __unicode__(self):
-        return self.identity + "--" + self.id
+        return self.identity + "-" + str(self.id)
 
 
 class Response(models.Model):
@@ -24,7 +30,7 @@ class Response(models.Model):
     details = models.CharField(max_length=165)
 
     def __unicode__(self):
-        return self.report.id + "--" + self.qid
+        return self.report.id + "-" + self.qid
 
     def get_details(self):
         return self.details
