@@ -47,7 +47,7 @@ class ResponseHandler(KeywordHandler):
                 self.respond("Where did the incident occur? (Community name and parish)")
         except:
             # Log error
-            logger.debug("State 1 Error: " + sys.exc_info()[0])
+            logger.debug(sys.exc_info()[0])
 
             # User does not exist in DB, send instructions for beginning report
             self.respond("Hello. To begin a report please text 'Report' or 'R' to 123456.")
