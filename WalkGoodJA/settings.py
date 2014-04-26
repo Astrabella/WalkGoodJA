@@ -23,11 +23,11 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'WalkGoodJA.db',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'walkgoodja',
+        'USER': 'walkgood',
+        'PASSWORD': 'walkgoodJA',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
@@ -36,7 +36,7 @@ DATABASES = {
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Jamaica'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -190,6 +190,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # External apps
     "django_nose",
+    "reports",
     #"djtables",  # required by rapidsms.contrib.locations
     "django_tables2",
     "selectable",
@@ -215,6 +216,8 @@ INSTALLED_BACKENDS = {
 LOGIN_REDIRECT_URL = '/'
 
 RAPIDSMS_HANDLERS = (
+    'keywordhandlers.ReportHandler',
+    'keywordhandlers.ResponseHandler',
     'rapidsms.contrib.echo.handlers.echo.EchoHandler',
     'rapidsms.contrib.echo.handlers.ping.PingHandler',
 )
