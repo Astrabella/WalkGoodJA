@@ -24,9 +24,9 @@ MANAGERS = ADMINS
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'walkgoodja',
-            'USER': 'walkgood',
-            'PASSWORD': 'walkgoodJA',
+            'NAME': 'gqfougqc_walkgoodja',
+            'USER': 'gqfougqc_walkgood',
+            'PASSWORD': '4#=cFqVIkU2R',
             'HOST': 'localhost',
             'PORT': '',
             }
@@ -68,7 +68,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/public/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'public', 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, '../static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -77,6 +77,7 @@ STATIC_URL = '/static/'
 # Additional locations of static files to collect
 STATICFILES_DIRS = (
         os.path.join(PROJECT_PATH, 'static'),
+        os.path.join(PROJECT_PATH, 'templates'),
         )
 
 # List of finder classes that know how to find static files in
@@ -84,7 +85,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-        # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
         )
 
 # Make this unique, and don't share it with anybody.
@@ -94,7 +94,6 @@ SECRET_KEY = 'uz7761ht093xfz!dk54p$h4%hh$0q_9rsr4!7c@rjj$5@p+fvc'
 TEMPLATE_LOADERS = (
         'django.template.loaders.filesystem.Loader',
         'django.template.loaders.app_directories.Loader',
-        # 'django.template.loaders.eggs.Loader',
         )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -194,6 +193,7 @@ INSTALLED_APPS = (
         "django_tables2",
         "selectable",
         "south",
+        "rtropo",
         # RapidSMS
         "rapidsms",
         "rapidsms.backends.database",
@@ -211,6 +211,15 @@ INSTALLED_BACKENDS = {
         "message_tester": {
             "ENGINE": "rapidsms.backends.database.DatabaseBackend",
             },
+        "my-tropo-backend": {
+            "ENGINE": "rtropo.outgoing.TropoBackend",
+            'config': {
+                # Your Tropo application's outbound token for messaging
+                'messaging_token': '25d0b0735e09834b957f8c83407cdad3d6bcc10486c3b505e34c5dd619a143e1eb2740037cd25c19249182b8',
+                # Your Tropo application's voice/messaging phone number (including country code)
+                'number': '+1-289-275-0578',
+            },
+            }
         }
 
 LOGIN_REDIRECT_URL = '/'

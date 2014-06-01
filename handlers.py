@@ -7,13 +7,14 @@ logger = logging.getLogger('rapidsms')
 
 class ReportHandler(PatternHandler):
     """ Handles the initialization of the reporting process. """
-    pattern = r"^\s*(R)(eport)?\s*$"
+    pattern = r"^\s*R(eport)?\s*$"
     report = 0
 
     def help(self):
         # Create a new report in the DB
         self.report = Report(identity=self.msg.connection.identity, state=1)
         self.report.save()
+        logger.debug("New report created")
 
         # Send initial response to user
         self.respond("Hello. Please text a number for the incident you are reporting..." +

@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from rtropo.views import message_received
 
 
 admin.autodiscover()
@@ -17,6 +18,9 @@ urlpatterns = patterns('',
     (r'^messagelog/', include('rapidsms.contrib.messagelog.urls')),
     (r'^messaging/', include('rapidsms.contrib.messaging.urls')),
     (r'^registration/', include('rapidsms.contrib.registration.urls')),
+    url(r'^tropo/',
+        message_received,
+        kwargs={'backend_name': 'my-tropo-backend'}),
 
     # Third party URLs
     (r'^selectable/', include('selectable.urls')),
